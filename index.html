@@ -13,7 +13,7 @@
 <body>
 
    <section>
-      <div class="container">
+      <div id="login_area" class="container">
          <div class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
                <div class="cart-item">
@@ -29,7 +29,7 @@
                            <input id="current_value" type="text" class="form-control text-center" value="1">
                            <button id="plus_btn" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$ <span id="price">1219</span></h5>
+                        <h5>$<span id="price">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -48,7 +48,7 @@
                            <button id="second_plus_btn" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$ <span id="secund_price">59</span></h5>
+                        <h5>$<span id="secund_price">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -65,13 +65,13 @@
 
                      <div class="col-md-4 status">
                         <h5>$1,278</h5>
-                        <h5>$0</h5>
+                        <h5>$ <span id="tex">0</span></h5>
                         <h5>$1,278</h5>
                      </div>
                   </div>
                </div>
                <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
+                  <button id="check_out_btn" type="button" class="btn btn-success check-out">Check Out</button>
                </div>
             </div>
          </div>
@@ -90,6 +90,10 @@
             // const totalPriceNumber=phonePriceNumber+1219;
             // document.getElementById('price').innerText=totalPriceNumber;
             phonePricePluse('price');
+            const texAdd=document.getElementById('tex').innerText;
+            const texNumber=parseFloat(texAdd);
+            const totalTex=texNumber+100;
+            document.getElementById('tex').innerText=totalTex;
             
          })
 
@@ -106,16 +110,32 @@
          // const totalPhonePrice=phonePriceNumber-1219;
          // document.getElementById('price').innerText=totalPhonePrice;
          phonePriceMinus('price');
+         const texAdd=document.getElementById('tex').innerText;
+            const texNumber=parseFloat(texAdd);
+            const totalTex=texNumber-100;
+            document.getElementById('tex').innerText=totalTex;
          })
          const secondPlusBtn=document.getElementById('second_plus_btn');
          secondPlusBtn.addEventListener('click',function(){
             plusValue('second_current_value');
-            phonePricePluse('secund_price');
+
+            const secondPrice=document.getElementById('secund_price').innerText;
+            const secondPriceNumber=parseFloat(secondPrice);
+            const totalSecond=secondPriceNumber+59;
+            document.getElementById('secund_price').innerText=totalSecond;
          })
          const secondMinusBtn=document.getElementById('second_minus_btn');
          secondMinusBtn.addEventListener('click',function(){
             minusValue('second_current_value');
-            phonePriceMinus('secund_price');
+            const secondPrice=document.getElementById('secund_price').innerText;
+            const secondPriceNumber=parseFloat(secondPrice);
+            const totalSecond=secondPriceNumber-59;
+            document.getElementById('secund_price').innerText=totalSecond;
+         })
+         const checkOutBtn=document.getElementById('check_out_btn');
+         checkOutBtn.addEventListener('click',function(){
+            const loginArea=document.getElementById('login_area');
+            loginArea.style.display='none';
          })
 
 
